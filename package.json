@@ -2,6 +2,7 @@
   "name": "prefect-worker-config",
   "version": "0.0.0",
   "description": "Parses config from prefect",
+  "main": "prefect-worker-config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/fannarsh/prefect-worker-config/issues"
   },
-  "homepage": "https://github.com/fannarsh/prefect-worker-config#readme"
+  "homepage": "https://github.com/fannarsh/prefect-worker-config#readme",
+  "dependencies": {
+    "bunyan": "^1.4.0"
+  }
 }
