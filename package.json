@@ -1,0 +1,23 @@
+{
+  "name": "prefect-worker-config",
+  "version": "0.0.0",
+  "description": "Parses config from prefect",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fannarsh/prefect-worker-config.git"
+  },
+  "keywords": [
+    "cluster",
+    "config",
+    "configuration"
+  ],
+  "author": "Fannar Snær <fannar@lambagras.is>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fannarsh/prefect-worker-config/issues"
+  },
+  "homepage": "https://github.com/fannarsh/prefect-worker-config#readme"
+}
