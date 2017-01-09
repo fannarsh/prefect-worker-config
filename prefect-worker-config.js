@@ -28,7 +28,7 @@ function getURL (service, path) {
   }
 
   var uo = url.parse('http://' + record.host + ':' + record.port);
-  uo.pathname = path;
+  if (path) uo.pathname = path;
   return url.format(uo);
 }
 
