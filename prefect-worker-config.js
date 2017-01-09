@@ -1,7 +1,9 @@
 'use strict';
 
+var url = require('url');
 var cluster = require('cluster');
 var bunyan = require('bunyan');
+var deck = require('deck');
 
 var args = process.argv.slice(2);
 var config = args[0];
@@ -17,5 +19,19 @@ var log = bunyan.createLogger({
   worker: cluster.isWorker ? cluster.worker.id : 'unknown',
   level: config.log_level
 });
+
+function getURL (service, path) {
+  var record = deck.pick(config[service] || []);
+  if (!record || !record.host) {
+    log.warn(new Error('Didn\'t find a record for ' + service));
+    return;
+  }
+
+  var uo = url.parse('http://' + record.host + ':' + record.port);
+  uo.pathname = path;
+  return url.format(uo);
+}
+
 config.log = log;
+config.getURL = getURL;
 module.exports = config;

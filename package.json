@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/fannarsh/prefect-worker-config#readme",
   "dependencies": {
-    "bunyan": "^1.4.0"
+    "bunyan": "^1.4.0",
+    "deck": "0.0.4"
   }
 }
