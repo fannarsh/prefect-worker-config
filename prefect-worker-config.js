@@ -12,7 +12,7 @@ if (!config || config === 'undefined') throw new Error('Missing config!');
 config = JSON.parse(config);
 
 process.on('message', function(msg) {
-  if (msg.type === 'config' && msg.config) config. = msg.config;
+  if (msg.type === 'config' && msg.config) config = msg.config;
 });
 
 // todo : we could move the log creation out to the service init file.
