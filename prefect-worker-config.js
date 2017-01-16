@@ -24,7 +24,7 @@ var log = bunyan.createLogger({
   level: config.log_level
 });
 
-function getURL (service, path) {
+function getURL (service, path, query) {
   var record = deck.pick(config[service] || []);
   if (!record || !record.host) {
     log.warn(new Error('Didn\'t find a record for ' + service));
@@ -32,7 +32,13 @@ function getURL (service, path) {
   }
 
   var uo = url.parse('http://' + record.host + ':' + record.port);
-  if (path) uo.pathname = path;
+  if (path) {
+    if (Array.isArray(path)) path = path.join('/');
+    uo.pathname = path;
+  }
+  if (query) {
+    uo.query = query;
+  }
   return url.format(uo);
 }
 
