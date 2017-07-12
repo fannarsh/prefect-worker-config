@@ -4,6 +4,7 @@ var url = require('url');
 var cluster = require('cluster');
 var bunyan = require('bunyan');
 var deck = require('deck');
+var exitHook = require('exit-hook');
 
 var args = process.argv.slice(2);
 var config = args[0];
@@ -14,6 +15,9 @@ config = JSON.parse(config);
 process.on('message', function(msg) {
   if (msg.type === 'config' && msg.config) config = msg.config;
 });
+
+// Responds to the cluster disconnect signal/event from the master process
+exitHook(function (next) { next(); });
 
 // todo : we could move the log creation out to the service init file.
 //        and/or use a modified consule.log object or pico as default.
