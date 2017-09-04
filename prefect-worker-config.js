@@ -1,5 +1,6 @@
 'use strict';
 
+var os = require('os');
 var url = require('url');
 var cluster = require('cluster');
 var bunyan = require('bunyan');
@@ -46,6 +47,11 @@ function getURL (service, path, query) {
   return url.format(uo);
 }
 
+function clientId () {
+  return [config.name, 'v' + config.version, config.environment, process.pid, os.hostname()].join('_');
+}
+
 config.log = log;
 config.getURL = getURL;
+config.clientId = clientId;
 module.exports = config;
