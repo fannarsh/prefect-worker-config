@@ -26,7 +26,8 @@ var log = bunyan.createLogger({
   name: config.name,
   version: config.version,
   worker: cluster.isWorker ? cluster.worker.id : 'unknown',
-  level: config.log_level
+  level: config.log_level,
+  serializers: bunyan.stdSerializers
 });
 
 function getURL (service, path, query) {
