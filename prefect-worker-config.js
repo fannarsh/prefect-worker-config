@@ -37,7 +37,9 @@ function getURL (service, path, query) {
     return;
   }
 
-  var uo = url.parse('http://' + record.host + ':' + record.port);
+  var scheme = 'http';
+  if (record.port === 443) scheme = 'https';
+  var uo = url.parse(scheme + '://' + record.host + ':' + record.port);
   if (path) {
     if (Array.isArray(path)) path = path.join('/');
     uo.pathname = path;
