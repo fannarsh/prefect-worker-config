@@ -51,7 +51,11 @@ function getURL (service, path, query) {
 }
 
 function clientId () {
-  return [config.name, 'v' + config.version, config.environment, process.pid, os.hostname()].join('_');
+  return [config.name, 'v' + config.version, config.environment, shortId(), process.pid].join('_');
+}
+
+function shortId () {
+  return os.hostname().substring(0, 8);
 }
 
 config.log = log;
