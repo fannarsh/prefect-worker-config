@@ -1,6 +1,6 @@
 {
   "name": "prefect-worker-config",
-  "version": "0.0.11",
+  "version": "0.2.0",
   "description": "Parses config from prefect",
   "main": "prefect-worker-config.js",
   "scripts": {
