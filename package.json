@@ -22,8 +22,8 @@
   },
   "homepage": "https://github.com/fannarsh/prefect-worker-config#readme",
   "dependencies": {
-    "bunyan": "^1.4.0",
     "deck": "0.0.4",
-    "exit-hook": "github:fannarsh/exit-hook"
+    "exit-hook": "github:fannarsh/exit-hook",
+    "pino": "^5.13.5"
   }
 }

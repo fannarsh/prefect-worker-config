@@ -3,7 +3,7 @@
 var os = require('os');
 var url = require('url');
 var cluster = require('cluster');
-var bunyan = require('bunyan');
+var pino = require('pino');
 var deck = require('deck');
 var exitHook = require('exit-hook');
 
@@ -20,14 +20,13 @@ process.on('message', function(msg) {
 // Responds to the cluster disconnect signal/event from the master process
 exitHook(function (next) { next(); });
 
-// todo : we could move the log creation out to the service init file.
-//        and/or use a modified consule.log object or pico as default.
-var log = bunyan.createLogger({
+var logger = pino({
   name: config.name,
+  level: config.log_level || 'info'
+});
+var log = logger.child({
   version: config.version,
-  worker: cluster.isWorker ? cluster.worker.id : 'unknown',
-  level: config.log_level,
-  serializers: bunyan.stdSerializers
+  worker: cluster.isWorker ? cluster.worker.id : 'unknown'
 });
 
 function getURL (service, path, query) {
